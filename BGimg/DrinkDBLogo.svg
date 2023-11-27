@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 91.95 88.85">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-miterlimit: 4;
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #000;
+      }
+
+      .cls-3 {
+        fill: #231f20;
+        stroke: #231f20;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_1" data-name="Group 1">
+    <path id="Icon_awesome-cocktail" data-name="Icon awesome-cocktail" class="cls-4" d="m51.83,71.45h-7.1v-15.87l21.39-21.38c1.22-1.22,1.22-3.2,0-4.42-.59-.59-1.38-.91-2.21-.91H17.45c-1.72,0-3.12,1.4-3.12,3.12,0,.83.33,1.62.91,2.21l21.39,21.38v15.87h-7.1c-2.8,0-5.07,2.27-5.07,5.07,0,.56.45,1.01,1.01,1.01h30.42c.56,0,1.01-.45,1.01-1.01,0-2.8-2.27-5.07-5.07-5.07Zm17.24-58.81c-7.71.02-14.58,4.89-17.13,12.17h3.56c2.11-3.62,4.17-7.22,12.73-8.7,3.74-.04,7.37,1.24,10.27,3.6,3.08,2.74,4.94,6.61,5.16,10.73,0,3.35-.31,6.83-3.96,10.79-2.65,3.08-6.57,4.77-10.63,4.56-2.36-.12-4.69-.6-6.91-1.43l-2.54,2.07c8.6,5.23,19.81,2.51,25.04-6.09s2.51-19.81-6.09-25.04c-2.86-1.74-6.15-2.66-9.5-2.66Z"/>
+    <g>
+      <circle id="Ellipse_6-2" data-name="Ellipse 6-2" class="cls-4" cx="42.32" cy="23.64" r="4"/>
+      <circle id="Ellipse_6-3" data-name="Ellipse 6-3" class="cls-5" cx="42.32" cy="23.64" r="4"/>
+    </g>
+    <g>
+      <circle id="Ellipse_7-2" data-name="Ellipse 7-2" class="cls-4" cx="31.82" cy="17.14" r="2.5"/>
+      <circle id="Ellipse_7-3" data-name="Ellipse 7-3" class="cls-5" cx="31.82" cy="17.14" r="2.5"/>
+    </g>
+    <line id="Line_1" data-name="Line 1" class="cls-2" x1="66.82" y1="27.64" x2="74.82" y2="16.64"/>
+    <line id="Line_2" data-name="Line 2" class="cls-1" x1="16.44" y1="12.08" x2="25.13" y2="31.9"/>
+    <line id="Line_3" data-name="Line 3" class="cls-2" x1="66.82" y1="35.14" x2="72.82" y2="46.14"/>
+    <line id="Line_4" data-name="Line 4" class="cls-2" x1="68.82" y1="31.14" x2="83.82" y2="31.14"/>
+    <line id="Line_5" data-name="Line 5" class="cls-1" x1="11.81" y1="15.33" x2="17.34" y2="12.75"/>
+  </g>
+  <circle class="cls-3" cx="42.31" cy="23.64" r="3.48"/>
+  <circle class="cls-3" cx="31.8" cy="17.12" r="2.01"/>
+</svg>
