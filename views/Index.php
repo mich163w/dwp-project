@@ -17,7 +17,7 @@
 
             <!-- Modal content -->
             <div class="modal-content">
-                <form method="post" id="modalform" action="mediaInsert.php" enctype="multipart/form-data">
+                <form method="post" id="modalform" action="../logic/mediaInsert.php" enctype="multipart/form-data">
                     <div class="modalbox">
                         <div class="modalLeft">
                             <input class="uploadBtn" type="file" name="picture">
