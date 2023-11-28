@@ -5,7 +5,7 @@ class LoginUser
 
     public function __construct($Username, $Pass)
     {
-        // Kommentar: Start sessionen, hvis den ikke allerede er startet
+        // Starter sessionen, hvis den ikke allerede er startet
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -33,13 +33,10 @@ class LoginUser
                     $redirect = new Redirector("index.php");
                 }
             } else {
-                $this->message = "Brugernavn/adgangskombinationen er forkert.<br />Sørg for, at din Caps Lock-tast er slået fra, og prøv igen.";
+                $this->message = "Brugernavn eller adgangskode er forkert.<br />Sørg for, at din Caps Lock-tast er slået fra, og prøv igen.";
             }
         } else {
-            $this->message = "Ingen sådan bruger i databasen.<br />Sørg for, at din Caps Lock-tast er slået fra, og prøv igen.";
+            $this->message = "Ingen bruger fundet.<br />Sørg for, at din Caps Lock-tast er slået fra, og prøv igen.";
         }
     }
 }
-?>
-
-

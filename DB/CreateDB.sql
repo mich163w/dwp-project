@@ -45,7 +45,7 @@ FOREIGN KEY (MediaLikeFK) REFERENCES Media (MediaID)
 
 INSERT INTO Profile VALUES (NULL, "SxySmth", "Kasper", "Schmidt", "Kasper.schmidt1@hotmail.com", "123", "213", "1998-05-05", 0, 0);
 INSERT INTO Profile VALUES (NULL, "Chell", "Michele", "Andersen", "MA@hotmail.com", "321", "321", "2003-05-05", 0, 0);
-INSERT INTO Profile VALUES (NULL, "admin", "admin", "admin", "admin@admin.com", "adminpass", "admin.png", "2000-01-01", 0, 0);
+INSERT INTO Profile VALUES (NULL, "admin", "admin", "admin", "admin@admin.com", "adminpass", "admin.png", "2000-01-01", 1, 0);
 
 INSERT INTO Media VALUES (NULL, "title", "text", "textt", "2", "2");
 INSERT INTO Comment VALUES (NULL, "Chell", "11", "2");

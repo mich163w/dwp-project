@@ -7,10 +7,9 @@
 <?php
 session_start();
 
-// ... (andre krævede inkluder)
-// Tjek om brugeren er logget ind som admin
+// Tjekker om brugeren er logget ind som admin
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== 'admin') {
-    // Hvis brugeren ikke er logget ind som admin, omdirigér til en anden side
+    // Hvis brugeren ikke er logget ind som admin, omdirigérer til index.php
     header("Location: index.php");
     exit();
 }
@@ -42,30 +41,30 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== 'admin') {
                         <span onclick="document.getElementById('id01').style.display='none'" class="w-button w-display-topright">&times;</span>
 
                         <?php
-$query = "SELECT *, isBlocked FROM `Profile`";
-$result = mysqli_query($conn, $query);
+                        $query = "SELECT *, isBlocked FROM `Profile`";
+                        $result = mysqli_query($conn, $query);
 
-while ($row = mysqli_fetch_array($result)) {
-?>
-    <div class="user-info">
-        <span>
-            User: <?php echo $row['Username']; ?>
-            <?php if ($row['isBlocked'] == 1) {
-                echo "<span class='blocked'>(Blocked)</span>";
-            } else {
-                echo "(Not Blocked)";
-            } ?>
-        </span>
-        <?php if ($row['isBlocked'] == 1) { ?>
-            <a href='../logic/block.php?Username=<?php echo $row['Username']; ?>&action=unblock'>Unblock</a>
-        <?php } else { ?>
-            <a href='../logic/block.php?Username=<?php echo $row['Username']; ?>&action=block'>Block</a>
-        <?php } ?>
-    </div>
-<?php
-}
-mysqli_close($conn);
-?>
+                        while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                            <div class="user-info">
+                                <span>
+                                    User: <?php echo $row['Username']; ?>
+                                    <?php if ($row['isBlocked'] == 1) {
+                                        echo "<span class='blocked'>(Blocked)</span>";
+                                    } else {
+                                        echo "(Not Blocked)";
+                                    } ?>
+                                </span>
+                                <?php if ($row['isBlocked'] == 1) { ?>
+                                    <a href='../logic/block.php?Username=<?php echo $row['Username']; ?>&action=unblock'>Unblock</a>
+                                <?php } else { ?>
+                                    <a href='../logic/block.php?Username=<?php echo $row['Username']; ?>&action=block'>Block</a>
+                                <?php } ?>
+                            </div>
+                        <?php
+                        }
+                        mysqli_close($conn);
+                        ?>
 
                     </div>
                 </div>

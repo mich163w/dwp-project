@@ -1,38 +1,39 @@
-<?php require("../DB/connection.php");
-
+<?php 
+require("../DB/connection.php");
 
 spl_autoload_register(function ($class) {
     include "../classes/" . $class . ".php";
 });
 $session = new SessionHandle();
 
-// Se efter logud nøgleord og log brugeren ud, hvis == 1
-if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-    $logout = new Logoutor();
-    $msg = "You are now logged out.";
-} elseif ($session->logged_in()) {
+// Check if the user is already logged in
+if ($session->logged_in()) {
     $redirect = new Redirector("index.php");
 }
 
-// START FORM PROCESSING
-if (isset($_POST['submit'])) { // Form has been submitted.
+// Process form submission
+if (isset($_POST['submit'])) {
     $profile = new LoginUser($_POST['Username'], $_POST['Pass']);
     $msg = $profile->message;
 
-    // Log ind som administrator
-    $Username = $_POST['Username'];
-    $Pass = $_POST['Pass'];
-
-    // Check for administrator credentials (replace these with your own authentication logic)
-    if ($Username === 'admin' && $Pass === 'adminpass') {
+      // Log ind som administrator
+      $Username = $_POST['Username'];
+      $Pass = $_POST['Pass'];
+      if ($Username === 'admin' && $Pass === 'adminpass') {
         $session->logged_in($Username); // Log ind som administrator
         $_SESSION['admin'] = $Username; // Gem admin-session
         $redirect = new Redirector("edit.php"); // Omdirigér til admin-siden
+    // Check if the login attempt was successful
+    if ($session->logged_in()) {
+        $redirect = new Redirector("index.php");
     } else {
-        $session->logged_in($Username); // Log ind som almindelig bruger
-        $redirect = new Redirector("index.php"); // Omdirigér til brugerens startside
+        // Display an error message
+        echo "<p>" . $msg . "</p>";
     }
-}?>
+}}
+?>
+
+
 
 <html>
 <title>Login</title>
@@ -61,6 +62,7 @@ if (isset($_POST['submit'])) { // Form has been submitted.
 </body>
 
 </html>
+
 
 
 <head>
