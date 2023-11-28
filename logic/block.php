@@ -17,7 +17,7 @@ if (isset($_GET['Username'])) {
     mysqli_stmt_fetch($stmtGetProfile);
     mysqli_stmt_close($stmtGetProfile);
 
-    // Opdater brugerens blokeringsstatus
+    // Blokeringsstatus
     if ($isBlocked == 1) {
         // Brugeren er blokeret, så unblock den
         $updateProfileQuery = "UPDATE `Profile` SET isBlocked = 0 WHERE Username = ?";

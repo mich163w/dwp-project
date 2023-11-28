@@ -4,7 +4,7 @@
     <div>
         
     </div>
-    <h1>SipCheer<img src="./img/logo-sip.png" alt="" style="height: 57px; width: 57px; margin-left: 5px;"></h1>
+    <h1>SipCheer<img src="../BGimg/logo-sip.png" alt="" style="height: 57px; width: 57px; margin-left: 5px;"></h1>
     <h2>Share your drinks with friends</h2>
     <div class="btns">
         <a href="./login.php"> <button class="login">Login</button></a>
@@ -20,7 +20,7 @@
 
 <style>
     body {
-        background-image: url(./img/sip.png);
+        background-image: url(../BGimg/sip.png);
         background-attachment: fixed;
         background-size: cover;
         color: white;

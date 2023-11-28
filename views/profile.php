@@ -164,7 +164,7 @@ border-radius: 10px;
             if (!empty($avatarURL)) {
                 echo "<img src='" . $avatarURL . "' alt='Avatar' style='width: 100px; height: 100px;'>";
             } else {
-                echo "<img src='./img/802001_man_512x512.png' alt='User Avatar' style='width: 100px; height: 100px;'>";
+                echo "<img src='../img/802001_man_512x512.png' alt='User Avatar' style='width: 100px; height: 100px;'>";
             }
             ?>
 
