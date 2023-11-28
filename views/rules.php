@@ -50,7 +50,7 @@ For our community of drink lovers, our photo-sharing weather. <br>
 
     body {
         
-        background-image: url(./img/sip.png);
+        background-image: url(../BGimg/sip.png);
         background-attachment: fixed;
         background-size: cover;
         color: white;
