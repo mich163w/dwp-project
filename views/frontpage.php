@@ -1,4 +1,4 @@
-<?php require("../DB/connection.php"); ?>
+<?php require("../DB/DBcon.php"); ?>
 
 <body>
     <div>

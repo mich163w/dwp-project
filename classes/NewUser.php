@@ -5,7 +5,7 @@ class NewUser
     public function __construct($Fname, $Lname, $Email, $Username, $Pass)
     {
         // perform validations on the form data
-        $db = new DbCon();
+        $db = new DBCon();
         $Fname = trim($_POST['Fname']);
         $Lname = trim($_POST['Lname']);
         $Email = trim($_POST['Email']);

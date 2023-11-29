@@ -1,5 +1,5 @@
 <?php 
-require("../DB/connection.php");
+require("../DB/DBcon.php");
 
 spl_autoload_register(function ($class) {
     include "../classes/" . $class . ".php";

@@ -1,7 +1,6 @@
 <?php
-require("../DB/connection.php");
+require("../DB/DBcon.php");
 require_once("../classes/SessionHandle.php");
-require_once("../classes/DbCon.php");
 require_once("../classes/Redirector.php");
 
 if (session_status() == PHP_SESSION_NONE) {
@@ -131,7 +130,7 @@ border-radius: 10px;
 
             // Tjek om formularen er indsendt for at opdatere avatar
             if (isset($_POST['submit'])) {
-                $db = new DbCon();
+                $db = new DBCon();
 
                 $avatarPath = "../img/" . $_FILES['Avatar']['name'];
 
@@ -147,7 +146,7 @@ border-radius: 10px;
             }
 
             // Hent avatar fra databasen
-            $db = new DbCon();
+            $db = new DBCon();
             $profileData = $db->dbCon->prepare("SELECT `Avatar` FROM `Profile` WHERE ProfileID = :profileId");
             $profileData->bindParam(':profileId', $_SESSION['userid']);
             $profileData->execute();
@@ -173,7 +172,7 @@ border-radius: 10px;
 
         <form action="updateProfile.php" method="post">
             <?php
-            $db = new DbCon();
+            $db = new DBCon();
             $profileData = $db->dbCon->prepare("SELECT * FROM `Profile` WHERE ProfileID = :profileId");
             $profileData->bindParam(':profileId', $_SESSION['userid']);
             $profileData->execute();

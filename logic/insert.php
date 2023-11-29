@@ -6,7 +6,7 @@ echo "Hello World";
 echo $_FILES['picture']['name'];
 
 
-require("../DB/connection.php");
+require("../DB/DBcon.php");
 // prepare and bind
 $stmt = $conn->prepare("INSERT INTO Profile (ProfileID, Username, Fname, Lname, Email, Pass, Avatar, Birthdate, isAdmin, isBlocked) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("isssssssii", $ProfileID, $Username, $Fname, $Lname, $Email, $Pass, $Avatar, $Birthdate,$isAdmin, $isBlocked);

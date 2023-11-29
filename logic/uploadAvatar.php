@@ -1,5 +1,5 @@
 <?php
-require_once("../DB/connection.php");
+require_once("../DB/DBcon.php");
 
 if (isset($_POST['submit'])) {
     if (
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
                 move_uploaded_file($_FILES['Avatar']['tmp_name'], $uploadPath);
                 echo "Stored in: " . $uploadPath;
 
-                // Brug den eksisterende databaseforbindelse fra DB/connection.php
+                // Brug den eksisterende databaseforbindelse fra DB/DBcon.php
                 $pic = $uploadPath; // Gem fuld sti i stedet for bare filnavnet
                 $sql = "INSERT INTO `Profile` (`Avatar`) VALUES (?)";
                 $stmt = $conn->prepare($sql);
