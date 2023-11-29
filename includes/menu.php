@@ -7,9 +7,21 @@
         <img id="searchicon" src="../BGimg/search.png" alt="searchIcon">
     </div>
 
+    <?php
+require_once("../classes/SessionHandle.php");
+
+$session = new SessionHandle();
+
+if (!$session->logged_in()) {
+    // Brug kun denne del, hvis brugeren ikke er logget ind
+    ?>
     <a href="http://localhost/dwp-project/views/frontpage.php">
-    <button class="toLogin">Login</button>
+        <button class="toLogin">Login</button>
     </a>
+    <?php
+}
+?>
+
 
     <div class="settings">
         <a href="http://localhost/dwp-project/views/profile.php">
