@@ -12,6 +12,6 @@ if (session_status() === PHP_SESSION_ACTIVE) {
 }
 
 // Omdirigér til login-siden eller en anden ønsket destination efter logout
-header("Location: login.php"); // Erstat "login.php" med din ønskede destinationsside
+header("Location: login.php"); 
 exit;
 ?>

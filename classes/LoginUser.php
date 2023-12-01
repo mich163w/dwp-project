@@ -10,7 +10,7 @@ class LoginUser
             session_start();
         }
 
-        $db = new DbCon();
+        $db = new DBCon();
         $Username = trim($Username);
         $Pass = trim($Pass);
         $profile = $db->dbCon->prepare("SELECT ProfileID, Username, Pass, IsAdmin FROM `Profile` WHERE Username = :username LIMIT 1");
