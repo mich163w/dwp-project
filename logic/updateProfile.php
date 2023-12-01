@@ -3,11 +3,11 @@ require("../DB/DBcon.php");
 
 if (isset($_POST['submit'])) {
     $ProfileID = $_POST['ProfileID'];
-    $Fname = $_POST['Fname'];
-    $Lname = $_POST['Lname'];
-    $Username = $_POST['Username'];
-    $Email = $_POST['Email'];
-    $Pass = $_POST['Pass'];
+    $Fname = htmlspecialchars(trim($_POST['Fname']));
+    $Lname = htmlspecialchars(trim($_POST['Lname']));
+    $Username = htmlspecialchars(trim($_POST['Username']));
+    $Email = htmlspecialchars(trim($_POST['Email']));
+    $Pass = htmlspecialchars(trim($_POST['Pass']));
 
     // Forberedt udsagn for opdatering
     $update_query = "UPDATE Profile SET Username=?, Fname=?, Lname=?, Email=?, Pass=? WHERE ProfileID=?";
