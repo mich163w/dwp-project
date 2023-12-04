@@ -1,5 +1,5 @@
 <?php
-require("../DB/connection.php");
+require("../DB/DBcon.php");
 
 if (isset($_GET['Username'])) {
     $Username = $_GET['Username'];
