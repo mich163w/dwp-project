@@ -6,6 +6,11 @@
     <div class="searchbar">
         <img id="searchicon" src="../BGimg/search.png" alt="searchIcon">
     </div>
+    <div>
+    <a href="http://localhost/dwp-project/views/about.php">
+        <button class="toLogin">About</button>
+    </a>
+    </div>
 
     <?php
 require_once("../classes/SessionHandle.php");
