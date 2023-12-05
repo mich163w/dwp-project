@@ -1,6 +1,10 @@
 <?php require('../Db/DBcon.php'); ?>
 
 <!DOCTYPE html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
 <title>Index</title>
 <html lang="en">
 
@@ -40,29 +44,29 @@
 
     <div class="imageModal">
         <?php
-      $dbCon = new DbCon();
+        $dbCon = new DbCon();
 
-      $sql = "SELECT Profile.ProfileID, Profile.Username, Profile.Fname, Profile.Lname, Profile.Avatar, Media.URL, Media.mediaTitle, Media.mediaDesc
+        $sql = "SELECT Profile.ProfileID, Profile.Username, Profile.Fname, Profile.Lname, Profile.Avatar, Media.URL, Media.mediaTitle, Media.mediaDesc
       FROM Profile
       JOIN Media ON Profile.ProfileID = Media.MediaProfileFK;";
 
-      // Execute the query using $dbCon->dbCon
-      $result = $dbCon->dbCon->query($sql);
+        // Execute the query using $dbCon->dbCon
+        $result = $dbCon->dbCon->query($sql);
 
 
-      if ($result->rowCount() > 0) {
-        // output data for hver række
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            echo '<div class="col-md-3 grid-item">';
-            echo '<img id="imageDisplay" width="324px" height="576px" src="' . $row["URL"] . '" alt="' . '">';
-            echo '<div class="overlay" data-toggle="modal" data-target="#imageModal" data-username="' . $row['Username'] . '" data-desc="' . $row['mediaDesc'] . '" data-title="' . $row['mediaTitle'] . '" data-avatar="' . $row['Avatar'] . '">';
-            echo '</div>';
-            echo '</div>';
+        if ($result->rowCount() > 0) {
+            // output data for hver række
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                echo '<div class="col-md-3 grid-item">';
+                echo '<img id="imageDisplay" width="324px" height="576px" src="' . $row["URL"] . '" alt="' . '">';
+                echo '<div class="overlay" data-toggle="modal" data-target="#imageModal" data-username="' . $row['Username'] . '" data-desc="' . $row['mediaDesc'] . '" data-title="' . $row['mediaTitle'] . '" data-avatar="' . $row['Avatar'] . '">';
+                echo '</div>';
+                echo '</div>';
+            }
+        } else {
+            echo "0 resultater";
         }
-    } else {
-        echo "0 resultater";
-    }
-        
+
         ?>
     </div>
 
@@ -151,4 +155,3 @@
 
 
 <?php
-

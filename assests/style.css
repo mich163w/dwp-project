@@ -6,6 +6,8 @@ body {
     background-image: url("../BGimg/DWPBaggrund.jpg");
     background-size: cover;
     background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
 
 }
 
@@ -244,7 +246,7 @@ input[type=file]::file-selector-button {
 
 .imageModal {
     position: absolute;
-    top:12%;
+    top: 12%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -253,7 +255,7 @@ input[type=file]::file-selector-button {
     margin-left: 4%;
     margin-top: 5%;
     border-radius: 20px;
-    transition:0.5s;
+    transition: 0.5s;
 }
 
 #imageDisplay:hover {
@@ -301,11 +303,11 @@ input[type=file]::file-selector-button {
 #modalImage {
     border-radius: 20px;
     height: 97.5%;
-    width:auto;
+    width: auto;
 }
 
 .modal-content {
-    background-color: rgba(0,0,0,0) !important; 
+    background-color: rgba(0, 0, 0, 0) !important;
     border: 0px solid black !important;
 }
 
@@ -314,13 +316,14 @@ input[type=file]::file-selector-button {
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
 }
+
 .modal-body {
-    position:absolute;
-    right:15%;
+    position: absolute;
+    right: 15%;
     display: flex;
     height: 80vh;
     width: 70vw;
-    padding:0;
+    padding: 0;
     border-radius: 20px;
 
 }
@@ -359,12 +362,12 @@ input[type=file]::file-selector-button {
     font-size: 16px;
 }
 
-.rules a{
+.rules a {
     text-decoration: none;
     color: white;
 }
 
-.toLogin { 
+.toLogin {
     border-radius: 16px;
     border: none;
     height: 33px;
@@ -375,11 +378,3 @@ input[type=file]::file-selector-button {
     position: absolute;
     margin-top: -17px;
 }
-
-
-
-
-
-
-
-
