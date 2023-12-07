@@ -1,5 +1,5 @@
 <?php
-require_once("../DB/DBcon.php");
+require("../DB/DBcon.php");
 
 if (isset($_POST['submit'])) {
     $ProfileID = $_POST['ProfileID'];
@@ -9,16 +9,18 @@ if (isset($_POST['submit'])) {
     $Email = htmlspecialchars(trim($_POST['Email']));
     $Pass = htmlspecialchars(trim($_POST['Pass']));
 
-    $db = new DBCon();
+    // Opret en ny instans af DBCon-klassen
+    $db = new DbCon();
 
     // Hent brugerens nuværende sidste opdateret tidspunkt
     $lastModified = $db->getLastModified($ProfileID);
 
-    // Opdater brugerprofil
+    // Forberedt udsagn for opdatering
     $update_query = "UPDATE Profile SET Username=?, Fname=?, Lname=?, Email=?, Pass=?, last_modified=CURRENT_TIMESTAMP WHERE ProfileID=?";
     $stmt = mysqli_prepare($conn, $update_query);
     mysqli_stmt_bind_param($stmt, "sssssi", $Username, $Fname, $Lname, $Email, $Pass, $ProfileID);
 
+    // Udfør opdateringsforespørgsel
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt); // Luk det forberedte udsagn
 
@@ -26,16 +28,14 @@ if (isset($_POST['submit'])) {
         $db->updateLastModified($ProfileID, $lastModified);
 
         mysqli_close($conn); // Luk forbindelsen til databasen
-        header("location: profile.php"); // Omdiriger til profile.php efter opdatering
+        header("location: ../views/profile.php"); // Omdiriger til profile.php efter opdatering
         exit;
     } else {
         echo "Fejl ved opdatering: " . mysqli_error($conn); // Vis fejlmeddelelse ved opdateringsfejl
     }
 }
+
 ?>
-
-
-
 
 
 

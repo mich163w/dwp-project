@@ -18,104 +18,104 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
-           body {
+        body {
 
-background-image: url(../BGimg/DWPBaggrund.jpg);
-background-attachment: fixed;
-background-size: cover;
-height: 1000vh;
-font-family: 'Montserrat', sans-serif;
-}
+            background-image: url(../BGimg/DWPBaggrund.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            height: 1000vh;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-.profile {
-background: white;
-max-width: 600px;
-margin: 0 auto;
-text-align: center;
-padding: 20px;
-border-radius: 10px;
-text-align: left;
-margin-bottom: 10px;
-}
+        .profile {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
 
-form {
-text-align: left;
-display: flex;
-flex-direction: column;
-}
+        form {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
 
 
-input[type="text"],
-input[type="password"] {
-padding: 10px;
-border-radius: 10px;
-border: 1px solid #ccc;
-margin-bottom: 15px;
-width: 96%;
-}
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            width: 96%;
+        }
 
-input[type="submit"] {
-padding: 8px;
-border: none;
-border-radius: 10px;
-background-color:#ddb3b3;
-color: white;
-cursor: pointer;
-width: 16%;
-display: flex;
-align-self: flex-end;
-justify-content: center;
-align-items: center;
-}
+        input[type="submit"] {
+            padding: 8px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ddb3b3;
+            color: white;
+            cursor: pointer;
+            width: 16%;
+            display: flex;
+            align-self: flex-end;
+            justify-content: center;
+            align-items: center;
+        }
 
-.top {
-display: flex;
-flex-direction: column;
-align-items: center;
+        .top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-}
+        }
 
-.profile img {
-border-radius: 50%;
-margin-bottom: 20px;
-object-fit: cover;
-}
+        .profile img {
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
 
-.profile h2 {
-margin-bottom: 10px;
-text-align: center;
-}
+        .profile h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-.profile p {
-margin-bottom: 5px;
-margin-left: 43px;
-}
+        .profile p {
+            margin-bottom: 5px;
+            margin-left: 43px;
+        }
 
-.logout {
-display: flex;
-justify-content: flex-end;
-}
+        .logout {
+            display: flex;
+            justify-content: flex-end;
+        }
 
-.logout-btn {
-background-color: #ddb3b3;
-color: #fff;
-padding: 10px;
-border: none;
-border-radius: 10px;
-}
+        .logout-btn {
+            background-color: #ddb3b3;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+        }
 
-.file-avatar {
-    position: absolute;
-    margin-top: 109px;
-    margin-left: -2%;
-}
+        .file-avatar {
+            position: absolute;
+            margin-top: 109px;
+            margin-left: -2%;
+        }
 
-.upload-button {
-    width: 53px !important;
-    /* margin-left: 4px !important; */
-    position: absolute;
-    margin: 103px -302px;
-    }
+        .upload-button {
+            width: 53px !important;
+            /* margin-left: 4px !important; */
+            position: absolute;
+            margin: 103px -302px;
+        }
     </style>
 </head>
 
@@ -143,16 +143,27 @@ border-radius: 10px;
                 } else {
                     echo "Fejl ved upload af avatarbillede.";
                 }
+
+                $lastModified = $db->getLastModified($_SESSION['userid']);
+
+                // Opdater brugerprofil
+                if ($db->updateProfile($_SESSION['userid'], $Fname, $Lname, $Email, $Pass, $Avatar, $Birthdate)) {
+                    // Opdater last_modified til det nye tidspunkt
+                    $db->updateLastModified($_SESSION['userid'], $lastModified);
+                } else {
+                    echo "Fejl ved opdatering af brugerprofil.";
+                }
             }
 
             // Hent avatar fra databasen
             $db = new DBCon();
-            $profileData = $db->dbCon->prepare("SELECT `Avatar` FROM `Profile` WHERE ProfileID = :profileId");
+            $profileData = $db->dbCon->prepare("SELECT *, DATE_FORMAT(last_modified, '%Y-%m-%d %H:%i:%s') AS formatted_last_modified FROM `Profile` WHERE ProfileID = :profileId");
             $profileData->bindParam(':profileId', $_SESSION['userid']);
             $profileData->execute();
             $result = $profileData->fetch();
 
             $avatarURL = $result['Avatar'] ?? '';
+            $lastModified = $result['formatted_last_modified'] ?? '';
 
             echo "<form method='post' action='' enctype='multipart/form-data'>";
             echo "<input class='file-avatar' type='file' name='Avatar' accept='image/*'>";
@@ -166,11 +177,11 @@ border-radius: 10px;
                 echo "<img src='../img/802001_man_512x512.png' alt='User Avatar' style='width: 100px; height: 100px;'>";
             }
             ?>
-
+            <p>Last Modified: <?php echo $lastModified; ?></p>
             <input type="hidden" name="ProfileID" value="<?php echo $_SESSION['userid']; ?>">
         </div>
 
-        <form action="updateProfile.php" method="post">
+        <form action="../logic/updateProfile.php" method="post">
             <?php
             $db = new DBCon();
             $profileData = $db->dbCon->prepare("SELECT * FROM `Profile` WHERE ProfileID = :profileId");
