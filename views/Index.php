@@ -98,19 +98,38 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+
         $(document).ready(function() {
             $('.grid-item').click(function() {
+                var MediaID = $(this).find('.overlay').data('media')
                 var imgSrc = $(this).find('img').attr('src');
-                var username = $(this).find('.overlay').data('username');
+                var username = $(this).find('.overlay').data('username'); //Eksempel på hvad disse gør: opretter en variabel ved navn "username". Her bruges jQuery for at finde et element med klassen ".overlay" i det element, der udløser begivenheden. Derefter bruges .data('username') til at få værdien af attributten 'username' fra dette element. Denne værdi bliver gemt i variablen "username".
                 var description = $(this).find('.overlay').data('desc');
                 var title = $(this).find('.overlay').data('title');
                 var avatar = $(this).find('.overlay').data('avatar');
+                var hiddenInputMediaID = $(this).find('.overlay').data('MediaID');
                 $('#modalImage').attr('src', imgSrc);
-                $('#modalUsername').text(username);
+                $('#modalUsername').text(username); //Finder et HTML-element med id'et 'modalUsername'. Vi indstiller teksten af dette element til værdien af variablen "username", der vises i modalboksen
                 $('#modalTitle').text(title);
                 $('#modalDescription').text(description);
                 $('#modalAvatar').attr('src', avatar);
                 $('#imageModal').modal('show');
+                $('#hiddenInputMediaID').val(MediaID);
+                $('#likeProfile').val(MediaID);
+                $('#likeMedia').val(MediaID);
+                console.log("Media ID: ", MediaID)
+                console.log("værdi sat: ", $('#hiddenInputMediaID').val())
+                var hiddenInputMediaID = $(this).find('.overlay').data('MediaID');
+                $('#hiddenInputMediaID').val(hiddenInputMediaID);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("comments").innerHTML = this.responseText;
+                    }
+                };
+                //var MediaID2 = $('#hiddenInputMediaID').val()  ; 
+                xmlhttp.open("GET", "getComments.inc.php?MediaID=" + MediaID, true);
+                xmlhttp.send();
             });
         });
     </script>
