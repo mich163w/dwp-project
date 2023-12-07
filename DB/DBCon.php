@@ -28,6 +28,38 @@ class DbCon
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
     }
+    
+    public function getLastModified($profileId) {
+        $stmt = $this->dbCon->prepare("SELECT last_modified FROM `Profile` WHERE ProfileID = :profileId");
+        $stmt->bindParam(':profileId', $profileId, PDO::PARAM_INT);
+        $stmt->execute();
+        $lastModified = $stmt->fetchColumn();
+        $stmt->closeCursor();
+        return $lastModified;
+    }
+    
+    public function updateLastModified($profileId, $lastModified) {
+        $stmt = $this->dbCon->prepare("UPDATE `Profile` SET last_modified = :lastModified WHERE ProfileID = :profileId");
+        $stmt->bindParam(':lastModified', $lastModified, PDO::PARAM_STR);
+        $stmt->bindParam(':profileId', $profileId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    
+    public function updateProfile($profileId, $Fname, $Lname, $Email, $Pass, $Avatar, $Birthdate) {
+        $stmt = $this->dbCon->prepare("UPDATE `Profile` SET Fname = :Fname, Lname = :Lname, Email = :Email, Pass = :Pass, Avatar = :Avatar, Birthdate = :Birthdate, last_modified = CURRENT_TIMESTAMP WHERE ProfileID = :profileId");
+        $stmt->bindParam(':Fname', $Fname, PDO::PARAM_STR);
+        $stmt->bindParam(':Lname', $Lname, PDO::PARAM_STR);
+        $stmt->bindParam(':Email', $Email, PDO::PARAM_STR);
+        $stmt->bindParam(':Pass', $Pass, PDO::PARAM_STR);
+        $stmt->bindParam(':Avatar', $Avatar, PDO::PARAM_STR);
+        $stmt->bindParam(':Birthdate', $Birthdate, PDO::PARAM_STR);
+        $stmt->bindParam(':profileId', $profileId, PDO::PARAM_INT);
+    
+        return $stmt->execute();
+    }
+    
+    
+    
 }
 ?>
 <?php
