@@ -8,8 +8,8 @@ echo $_FILES['picture']['name'];
 
 require("../DB/DBcon.php");
 // prepare and bind
-$stmt = $conn->prepare("INSERT INTO Profile (ProfileID, Username, Fname, Lname, Email, Pass, Avatar, Birthdate, isAdmin, isBlocked) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("isssssssii", $ProfileID, $Username, $Fname, $Lname, $Email, $Pass, $Avatar, $Birthdate,$isAdmin, $isBlocked);
+$stmt = $conn->prepare("INSERT INTO Profile (ProfileID, Username, Fname, Lname, Email, Pass, Avatar, Birthdate, isAdmin, isBlocked, last_modified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("isssssssii", $ProfileID, $Username, $Fname, $Lname, $Email, $Pass, $Avatar, $Birthdate,$isAdmin, $isBlocked, $last_modified);
 
 
 // set parameters and execute
@@ -24,6 +24,7 @@ $Birthdate = htmlspecialchars(trim($_POST['Birthdate']));
 $isAdmin = isset($_POST['isAdmin']) ? 1 : 0;
 // Standardværdi for IsBlocked, da en ny bruger normalt ikke er blokeret
 $IsBlocked = 0;
+$last_modified = date('Y-m-d H:i:s');
 $stmt->execute();
 
 
@@ -53,14 +54,6 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
 
-
-
-
-
-$profile = "INSERT INTO `Profile` (`ProfileID`, `Username`, `Fname`, `Lname`, `Email`, `Pass`, `Avatar`, `Birthdate`) VALUES ('$ProfileID', '$Username', '$Fname', '$Lname', '$Email', '$Pass', '$Avatar, '$Birthdate');";
-$media = "INSERT INTO `Media` (`URL`, `mediaTitle`, `mediaDesc`, `mediaComment`, `mediaLike`) VALUES ('$URL', '$mediaTitle', '$mediaDesc', '$mediaComment', '$mediaLike');";
-$comment = "INSERT INTO `Comment` (`CommentID`, `CommentText`, `LikeCount`) VALUES ('$CommentID', '$CommentText', '$LikeCount');";
-$likes = "INSERT INTO `Likess` (`LikeID`, `LikeAmount`) VALUES ('$LikeID', '$LikeAmount');";
 
 
 
