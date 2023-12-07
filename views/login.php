@@ -1,4 +1,4 @@
-<?php 
+<?php
 require("../DB/DBcon.php");
 
 spl_autoload_register(function ($class) {
@@ -16,22 +16,24 @@ if (isset($_POST['submit'])) {
     $profile = new LoginUser($_POST['Username'], $_POST['Pass']);
     $msg = $profile->message;
 
-      // Log ind som administrator
-      $Username = $_POST['Username'];
-      $Pass = $_POST['Pass'];
-      if ($Username === 'admin' && $Pass === 'adminpass') {
+    // Log ind som administrator
+    $Username = $_POST['Username'];
+    $Pass = $_POST['Pass'];
+    if ($Username === 'admin' && $Pass === 'adminpass') {
         $session->logged_in($Username); // Log ind som administrator
         $_SESSION['admin'] = $Username; // Gem admin-session
         $redirect = new Redirector("edit.php"); // Omdirigér til admin-siden
-    // Check if the login attempt was successful
-    if ($session->logged_in()) {
-        $redirect = new Redirector("index.php");
-    } else {
-        // Display an error message
-        echo "<p>" . $msg . "</p>";
+        // Check if the login attempt was successful
+        if ($session->logged_in()) {
+            $redirect = new Redirector("index.php");
+        } else {
+            // Display an error message
+            echo "<p>" . $msg . "</p>";
+        }
     }
-}}
+}
 ?>
+
 
 
 
@@ -56,19 +58,21 @@ if (isset($_POST['submit'])) {
         echo "<p>" . $msg . "</p>";
     }
     ?>
+ <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+    <form id="loginForm" action="" method="post" >
 
-    <form action="" method="post">
-     
         <h2>Login</h2>
-    <h4>Username:</h4>
-    <input type="text" name="Username" maxlength="30" />
-    <h4>Password:</h4>
-    <input type="password" name="Pass" maxlength="30" />
-    <a href="./newuser.php"><p>Or sign up</p></a>
-    <!-- Add reCAPTCHA widget to the login submit button -->
-    <div class="g-recaptcha" data-sitekey="6LfySSUpAAAAANqdMOMSVGqB4AsRkYpEG13pCqxM" data-action="LOGIN"></div>
-    <br/>
-    <input type="submit" name="submit" value="Login" />
+        <h4>Username:</h4>
+        <input type="text" name="Username" maxlength="30" />
+        <h4>Password:</h4>
+        <input type="password" name="Pass" maxlength="30" />
+        <a href="./newuser.php">
+            <p>Or sign up</p>
+        </a>
+        <!-- Add reCAPTCHA widget to the login submit button -->
+        <div class="g-recaptcha" data-sitekey="6LfySSUpAAAAANqdMOMSVGqB4AsRkYpEG13pCqxM" data-callback="onSubmit" data-action="LOGIN"></div>
+        <br />
+        <input type="submit" name="submit" value="Login" />
     </form>
 </body>
 
@@ -77,73 +81,66 @@ if (isset($_POST['submit'])) {
 
 
 
-
-   <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async defer>
-
-function onSubmit(token) {
-      // Handle the token, for example, submit the form
-      document.getElementsByTagName("form")[0].submit();
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url(../BGimg/DWPBaggrund.jpg);
+        background-size: cover;
     }
- </script>
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url(../BGimg/DWPBaggrund.jpg);
-            background-size: cover;
-        }
 
-        h2 {
-            text-align: center;
-        }
+    h2 {
+        text-align: center;
+    }
 
-        h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: lighter;
-            margin: auto;
-        }
+    h4 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: lighter;
+        margin: auto;
+    }
 
-        form {
-            max-width: 400px;
-            margin: 150px auto;
-            background-color: #ffffff;
-            padding: 27px;
-            border-radius: 10px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-p {
-    font-size: 12px;
-    color: #9b9b9b;
-    margin-top: -4px;
-}
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
+    form {
+        max-width: 400px;
+        margin: 150px auto;
+        background-color: #ffffff;
+        padding: 27px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-        }
+    p {
+        font-size: 12px;
+        color: #9b9b9b;
+        margin-top: -4px;
+    }
 
-        input[type="submit"] {
-            width: 100%;
-            background-color: #ddb3b3;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 11px;
-        }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #e6cdcd;
-        }
-    </style>
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        background-color: #ddb3b3;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 11px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #e6cdcd;
+    }
+</style>
