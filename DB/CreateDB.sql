@@ -12,7 +12,8 @@ Pass varchar(255),
 Avatar varchar(255),
 Birthdate date,
 IsAdmin TINYINT(1) DEFAULT 0,
-IsBlocked TINYINT(1) DEFAULT 0
+IsBlocked TINYINT(1) DEFAULT 0,
+last_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
  
 CREATE TABLE Media (
@@ -51,3 +52,15 @@ INSERT INTO Media VALUES (NULL, "title", "text", "textt", "2", "2");
 INSERT INTO Comment VALUES (NULL, "Chell", "11", "2");
 
 
+DELIMITER //
+
+CREATE TRIGGER before_update_profile
+BEFORE UPDATE ON Profile
+FOR EACH ROW
+BEGIN
+    SET NEW.last_modified = CURRENT_TIMESTAMP();
+END;
+
+//
+
+DELIMITER ;
