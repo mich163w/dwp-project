@@ -176,7 +176,12 @@ if (session_status() == PHP_SESSION_NONE) {
             } else {
                 echo "<img src='../img/802001_man_512x512.png' alt='User Avatar' style='width: 100px; height: 100px;'>";
             }
+            $profileId = $_SESSION['userid'];
+            $db = new DbCon();
+            $lastLogin = $db->getLastLogin($profileId);
+            echo "<p>Last Login: " . $lastLogin . "</p>";
             ?>
+
             <p>Last Modified: <?php echo $lastModified; ?></p>
             <input type="hidden" name="ProfileID" value="<?php echo $_SESSION['userid']; ?>">
         </div>

@@ -20,6 +20,11 @@ if (isset($_POST['submit'])) {
     $Username = $_POST['Username'];
     $Pass = $_POST['Pass'];
     if ($Username === 'admin' && $Pass === 'adminpass') {
+        // Opdater last login i databasen
+        $db = new DbCon();
+        $profileId = $db->getProfileIdByUsername($Username); // Gem ID'et i variabel
+        $db->updateLastLogin($profileId);
+
         $session->logged_in($Username); // Log ind som administrator
         $_SESSION['admin'] = $Username; // Gem admin-session
         $redirect = new Redirector("edit.php"); // Omdirigér til admin-siden
@@ -32,7 +37,10 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+
 ?>
+
 
 
 

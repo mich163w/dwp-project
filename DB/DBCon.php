@@ -57,8 +57,25 @@ class DbCon
     
         return $stmt->execute();
     }
-    
-    
+    public function getProfileIdByUsername($username) {
+        $stmt = $this->dbCon->prepare("SELECT ProfileID FROM Profile WHERE Username = :username");
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    } 
+    public function updateLastLogin($profileId) {
+        $stmt = $this->dbCon->prepare("UPDATE `Profile` SET last_login = CURRENT_TIMESTAMP WHERE ProfileID = :profileId");
+        $stmt->bindParam(':profileId', $profileId, PDO::PARAM_INT);
+        $stmt->execute();
+    } 
+    public function getLastLogin($profileId) {
+        $stmt = $this->dbCon->prepare("SELECT last_login FROM `Profile` WHERE ProfileID = :profileId");
+        $stmt->bindParam(':profileId', $profileId, PDO::PARAM_INT);
+        $stmt->execute();
+        $lastLogin = $stmt->fetchColumn();
+        $stmt->closeCursor();
+        return $lastLogin;
+    }
     
 }
 ?>
