@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+
 </head>
 
 <body>
@@ -82,9 +82,7 @@ if (isset($_POST['submit'])) {
         <a href="./newuser.php">
             <p>Or sign up</p>
         </a>
-        <!-- Add reCAPTCHA widget to the login submit button -->
-        <div class="g-recaptcha" data-sitekey="6LfySSUpAAAAANqdMOMSVGqB4AsRkYpEG13pCqxM" data-callback="onSubmit" data-action="LOGIN"></div>
-        <br />
+      
         <input type="submit" name="submit" value="Login" />
     </form>
 </body>
