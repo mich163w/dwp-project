@@ -37,10 +37,12 @@ FOREIGN KEY (MediaCommentFK) REFERENCES Media (MediaID)
 );
 
 CREATE TABLE Likes (
-LikeID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
-LikeAmount int,
-MediaLikeFK int NOT NULL,
-FOREIGN KEY (MediaLikeFK) REFERENCES Media (MediaID)
+    LikeID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    LikeAmount int,
+    MediaLikeFK int NOT NULL,
+    ProfileLikeFK int NOT NULL,
+    FOREIGN KEY (MediaLikeFK) REFERENCES Media (MediaID),
+    FOREIGN KEY (ProfileLikeFK) REFERENCES Profile (ProfileID)
 );
 
 
