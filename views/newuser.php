@@ -1,7 +1,7 @@
-<?php require("../DB/DBcon.php"); ?>
-<?php require_once("../classes/SessionHandle.php"); ?>
-<?php require_once("../classes/Redirector.php"); ?>
-<?php require_once("../classes/NewUser.php"); ?>
+
+<?php spl_autoload_register(function ($class) {
+    include_once "../classes/" . $class . ".php";
+});?>
 <?php
 
 // START FORM PROCESSING

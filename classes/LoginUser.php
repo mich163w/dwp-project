@@ -1,4 +1,7 @@
 <?php
+
+//require_once("../DB/DBCon.php");
+
 class LoginUser
 {
     public $message;

@@ -1,5 +1,5 @@
 <?php
-require("../DB/DBcon.php");
+//require_once("../DB/DBcon.php");
 // Start sessionen
 session_start();
 

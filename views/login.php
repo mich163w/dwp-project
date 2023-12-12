@@ -1,9 +1,8 @@
 <?php
-require("../DB/DBcon.php");
-
 spl_autoload_register(function ($class) {
-    include "../classes/" . $class . ".php";
+    include_once "../classes/" . $class . ".php";
 });
+
 
 $session = new SessionHandle();
 

@@ -1,5 +1,7 @@
 <?php
-require("../DB/DBcon.php");
+spl_autoload_register(function ($class) {
+    include_once "../classes/" . $class . ".php";
+});
 
 ?>
 

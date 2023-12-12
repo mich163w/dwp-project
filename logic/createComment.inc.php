@@ -1,6 +1,6 @@
 <?php
 
-require("../DB/DBCon.php");
+require("../classes/DBCon.php");
 
     if (isset($_POST['commentSubmit'])) {
         $CommentText = htmlspecialchars(trim($_POST['CommentText']));

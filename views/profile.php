@@ -1,7 +1,7 @@
 <?php
-require("../DB/DBcon.php");
-require_once("../classes/SessionHandle.php");
-require_once("../classes/Redirector.php");
+spl_autoload_register(function ($class) {
+    include_once "../classes/" . $class . ".php";
+});
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -23,7 +23,7 @@ if (session_status() == PHP_SESSION_NONE) {
             background-image: url(../BGimg/DWPBaggrund.jpg);
             background-attachment: fixed;
             background-size: cover;
-            height: 1000vh;
+            height: auto;
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -144,6 +144,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     echo "Fejl ved upload af avatarbillede.";
                 }
 
+                /*
                 $lastModified = $db->getLastModified($_SESSION['userid']);
 
                 // Opdater brugerprofil
@@ -153,8 +154,9 @@ if (session_status() == PHP_SESSION_NONE) {
                 } else {
                     echo "Fejl ved opdatering af brugerprofil.";
                 }
+                */
             }
-
+            
             // Hent avatar fra databasen
             $db = new DBCon();
             $profileData = $db->dbCon->prepare("SELECT *, DATE_FORMAT(last_modified, '%Y-%m-%d %H:%i:%s') AS formatted_last_modified FROM `Profile` WHERE ProfileID = :profileId");
@@ -186,8 +188,8 @@ if (session_status() == PHP_SESSION_NONE) {
             <input type="hidden" name="ProfileID" value="<?php echo $_SESSION['userid']; ?>">
         </div>
 
-        <form action="../logic/updateProfile.php" method="post">
-            <?php
+
+        <?php
             $db = new DBCon();
             $profileData = $db->dbCon->prepare("SELECT * FROM `Profile` WHERE ProfileID = :profileId");
             $profileData->bindParam(':profileId', $_SESSION['userid']);
@@ -196,6 +198,8 @@ if (session_status() == PHP_SESSION_NONE) {
             $result = $profileData->fetch();
             ?>
 
+
+        <form action="../logic/updateProfile.php" method="post">
             <h2>@<?php echo $result['Username']; ?></h2>
             <input type="hidden" name="ProfileID" value="<?php echo $result['ProfileID']; ?>">
             First name: <input type="text" name="Fname" value="<?php echo $result['Fname']; ?>">

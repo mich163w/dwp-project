@@ -5,7 +5,7 @@ require_once("upload.php");
 echo $_FILES['picture']['name'];
 
 
-require("../DB/DBcon.php");
+require("../classes/DBCon.php");
 session_start();
 
 $stmt1 = $conn->prepare("INSERT INTO Media (URL, mediaTitle, mediaDesc, mediaProfileFK) VALUES (?, ?, ?, ?)");

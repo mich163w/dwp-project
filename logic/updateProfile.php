@@ -1,5 +1,5 @@
 <?php
-require("../DB/DBcon.php");
+require("../classes/DBCon.php");
 
 if (isset($_POST['submit'])) {
     $ProfileID = $_POST['ProfileID'];

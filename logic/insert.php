@@ -1,12 +1,19 @@
 <?php
 
+require("../classes/DBCon.php");
+
+spl_autoload_register(function ($class) {
+    include "../classes/" . $class . ".php";
+});
+
+
 require_once("upload.php");
 
 echo "Hello World";
 echo $_FILES['picture']['name'];
 
 
-require("../DB/DBcon.php");
+
 // prepare and bind
 $stmt = $conn->prepare("INSERT INTO Profile (ProfileID, Username, Fname, Lname, Email, Pass, Avatar, Birthdate, isAdmin, isBlocked, last_modified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("isssssssii", $ProfileID, $Username, $Fname, $Lname, $Email, $Pass, $Avatar, $Birthdate,$isAdmin, $isBlocked, $last_modified);

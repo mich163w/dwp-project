@@ -1,5 +1,5 @@
 <?php
-require_once("../DB/DBcon.php");
+require("../classes/DBCon.php");
 
 if (isset($_POST['submit'])) {
     if (

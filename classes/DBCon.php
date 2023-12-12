@@ -1,9 +1,11 @@
 <?php
-class DbCon
+require_once("constants.php");
+class DBCon
 {
     private $Username = "root";
     private $Pass = "";
     public $dbCon;
+
     public function __construct(){
         $dsn = 'mysql:host=localhost;dbname=SipCheer;charset=utf8';
         $this->dbCon = new PDO($dsn, $this->Username, $this->Pass);
@@ -80,13 +82,13 @@ class DbCon
 }
 ?>
 <?php
-require ("constants.php");
+require_once("DBCon.php");
+
 $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS);
 if(!$conn) {
     die("Error!");
 }
 $conn->select_db(DB_NAME);
-
 
 $dbSelect = mysqli_select_db($conn, DB_NAME);
 
@@ -94,3 +96,4 @@ if (!$dbSelect) {
     die("Error: Unable to select database. " . mysqli_error($conn));
 }
 ?>
+

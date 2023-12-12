@@ -1,5 +1,3 @@
-<?php require("../DB/DBcon.php"); ?>
-
 <body>
     <div>
         
