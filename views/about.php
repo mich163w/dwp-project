@@ -1,10 +1,3 @@
-<?php
-spl_autoload_register(function ($class) {
-    include_once "../classes/" . $class . ".php";
-});
-
-?>
-
 <!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,6 +1,5 @@
 <?php
 
-//require_once("../DB/DBCon.php");
 
 class LoginUser
 {
@@ -28,12 +27,12 @@ class LoginUser
                     $_SESSION['admin'] = $found_user[0]['Username'];
                     $_SESSION['Profile'] = $found_user[0]['Username'];
                     $_SESSION['userid'] = $found_user[0]['ProfileID'];
-                    $redirect = new Redirector("edit.php");
+                    $redirect = new Redirector("../views/edit.php");
                 } else {
                     // Almindelig bruger login
                     $_SESSION['Profile'] = $found_user[0]['Username'];
                     $_SESSION['userid'] = $found_user[0]['ProfileID'];
-                    $redirect = new Redirector("index.php");
+                    $redirect = new Redirector("../views/index.php");
                 }
             } else {
                 $this->message = "Brugernavn eller adgangskode er forkert.<br />Sørg for, at din Caps Lock-tast er slået fra, og prøv igen.";
@@ -43,3 +42,4 @@ class LoginUser
         }
     }
 }
+?>

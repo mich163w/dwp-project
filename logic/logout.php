@@ -1,5 +1,5 @@
 <?php
-//require_once("../DB/DBcon.php");
+
 // Start sessionen
 session_start();
 
@@ -12,6 +12,6 @@ if (session_status() === PHP_SESSION_ACTIVE) {
 }
 
 // Omdirigér til login-siden eller en anden ønsket destination efter logout
-header("Location: login.php"); 
+header("Location: ../views/login.php"); 
 exit;
 ?>

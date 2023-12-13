@@ -110,11 +110,12 @@ input[type=file]::file-selector-button {
     position: fixed;
     top: 80%;
     left: 47.9%;
-    z-index: 1;
+    z-index: 1222;
 }
 
 #myBtn:hover {
     cursor: pointer;
+    background-color: red;
 }
 
 #test {

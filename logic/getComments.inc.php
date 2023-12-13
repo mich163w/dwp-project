@@ -1,6 +1,6 @@
 <?php
 // Inkluder databaseforbindelse
-require("../classes/DBCon.php");
+require_once("../classes/DBCon.php");
 // Antag, at $mediaCommentFK er din MediaID-værdi (Kun brugt af Ajax)
 if (isset($_GET["MediaID"])) {
 

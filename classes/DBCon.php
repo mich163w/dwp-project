@@ -80,9 +80,7 @@ class DBCon
     }
     
 }
-?>
-<?php
-require_once("DBCon.php");
+
 
 $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS);
 if(!$conn) {
@@ -95,5 +93,5 @@ $dbSelect = mysqli_select_db($conn, DB_NAME);
 if (!$dbSelect) {
     die("Error: Unable to select database. " . mysqli_error($conn));
 }
-?>
+
 

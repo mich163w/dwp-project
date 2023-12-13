@@ -121,7 +121,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <body>
     <div class="logout">
-        <a href="logout.php"> <button class="logout-btn"> Log ud</button></a>
+        <a href="../logic/logout.php"> <button class="logout-btn"> Log ud</button></a>
     </div>
 
     <div class="profile">
@@ -144,17 +144,6 @@ if (session_status() == PHP_SESSION_NONE) {
                     echo "Fejl ved upload af avatarbillede.";
                 }
 
-                /*
-                $lastModified = $db->getLastModified($_SESSION['userid']);
-
-                // Opdater brugerprofil
-                if ($db->updateProfile($_SESSION['userid'], $Fname, $Lname, $Email, $Pass, $Avatar, $Birthdate)) {
-                    // Opdater last_modified til det nye tidspunkt
-                    $db->updateLastModified($_SESSION['userid'], $lastModified);
-                } else {
-                    echo "Fejl ved opdatering af brugerprofil.";
-                }
-                */
             }
             
             // Hent avatar fra databasen

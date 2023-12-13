@@ -1,9 +1,7 @@
-<?php spl_autoload_register(function ($class) {
-    include_once "../classes/" . $class . ".php";
-}); ?>
-
-
 <?php
+
+require_once("../classes/DBCon.php"); 
+
 session_start();
 
 // Tjekker om brugeren er logget ind som admin
@@ -15,6 +13,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== 'admin') {
 
 ?>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -24,22 +23,22 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== 'admin') {
 
 <body>
     <div class="logout">
-        <a href="logout.php"> <button class="logout-btn"> Log ud</button></a>
+        <a href="../logic/logout.php"> <button class="logout-btn"> Log ud</button></a>
     </div>
-    <h2>Hello Admin</h2>
-    <p>You can edit stuff here</p>
+    <h1>Hello Admin</h1>
 
     <!-- Redigeringsknappen vises kun for administratorer -->
     <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] === 'admin') { ?>
         <div class="edit-container">
             <button onclick="document.getElementById('id01').style.display='block'" class="edit-btn">Block user</button>
 
-            <div id="id01" class="w-modal">
-                <div class="w-modal-content">
-                    <div class="w-container">
+            <div id="id01" class="edit-modal">
+                <div class="edit-modal">
+                    <div class="edit-modal-container">
                         <span onclick="document.getElementById('id01').style.display='none'" class="w-button w-display-topright">&times;</span>
 
                         <?php
+
                         $query = "SELECT *, isBlocked FROM `Profile`";
                         $result = mysqli_query($conn, $query);
 

@@ -1,4 +1,3 @@
-
 <?php spl_autoload_register(function ($class) {
     include_once "../classes/" . $class . ".php";
 });?>
@@ -36,7 +35,7 @@ if (!empty($msg)) {
     
    <h4>Password:</h4> 
     <input type="password" name="Pass" maxlength="30" />
-    <a href="./login.php"><p>Already a user? Login</p></a>
+    <a href="login.php"><p>Already a user? Login</p></a>
     <input type="submit" name="submit" value="Sign up" />
   
 </form>

@@ -27,11 +27,3 @@ if(isset($_POST['submit'])) {
     }    
 }
 
-
-
-
-/*  
-    echo "Type: ". $_FILES['picture']['type']."</br>";
-    echo "Size: ". ($_FILES['picture']['size']/1024)."kb.</br>"; // Det er normalt vist i Bites, men vi dividere med 1024 for at få kilobytes
-    echo "Stored: ". $_FILES['picture']['tmp_name']."</br>";
-*/

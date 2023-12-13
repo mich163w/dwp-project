@@ -29,11 +29,13 @@ FOREIGN KEY (MediaProfileFK) REFERENCES Profile (ProfileID)
 );
 
 CREATE TABLE Comment (
-CommentID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
-CommentText text, 
-LikeCount int,
-MediaCommentFK int NOT NULL,
-FOREIGN KEY (MediaCommentFK) REFERENCES Media (MediaID)
+    CommentID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    CommentText TEXT NOT NULL,
+    dato date NOT NULL,
+    MediaCommentFK INT NOT NULL,
+    ProfileFK INT NOT NULL,
+    FOREIGN KEY (MediaCommentFK) REFERENCES Media (MediaID),
+    FOREIGN KEY (ProfileFK) REFERENCES Profile (ProfileID)
 );
 
 CREATE TABLE Likes (
@@ -66,3 +68,6 @@ CREATE TRIGGER update_last_login
 BEFORE UPDATE ON Profile
 FOR EACH ROW
 SET NEW.last_login = CURRENT_TIMESTAMP;
+
+
+

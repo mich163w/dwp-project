@@ -3,8 +3,8 @@ require("../classes/DBCon.php");
 
 // Håndter LIKE-anmodningen
 // Check if the user is logged in
-if (isset($_SESSION['user_id'])) { //Måske ændres til ProfileID
-    $user_id = $_SESSION['user_id']; //Måske ændres til ProfileID
+if (isset($_SESSION['user_id'])) { 
+    $user_id = $_SESSION['user_id']; 
     // Check if the form was submitted correctly
     if (isset($_POST['like_action'], $_POST['MediaLikeFK'])) {
         $like_action = ($_POST['like_action'] == 'Like') ? 1 : -1;
@@ -41,7 +41,3 @@ if (isset($_SESSION['user_id'])) { //Måske ændres til ProfileID
 }
 // Close database connection
 $conn->close();
-/*
-HasLiked fra index ind i like.php
-Lav INsert om til update, og hvis ikke allerede eksistere så insert
-*/
