@@ -21,17 +21,19 @@ if (isset($_GET["MediaID"])) {
     $result = $stmt->get_result();
 
     // Håndter resultatet (du kan tilpasse dette baseret på dine behov)
-    while ($row = $result->fetch_assoc()) {
-        echo "<div class='commment-box'>";
-        echo "<div class='userBox'";
-        echo "<img id='commentAvatar' src='" . $row['Avatar'] . "' alt='Avatar'><br>";
-        echo "<span class='userNameComment'>" . $row['Username'] . "</span><br>";
-        echo "</div>";
-        echo "<span class='datoComment'>" . $row['dato'] . "</span><br>";
-        echo "<span class='msgComment'>" . nl2br($row['CommentText']);
-        "</span>";
-        echo "</div>";
-    }
+  // ...
+while ($row = $result->fetch_assoc()) {
+    echo "<div class='commment-box'>";
+    echo "<div class='userBox'>";
+    echo "<img id='commentAvatar' src='" . $row['Avatar'] . "' alt='Avatar'><br>";
+    echo "<span class='userNameComment'>" . $row['Username'] . "</span><br>";
+    echo "</div>";
+    echo "<span class='datoComment'>" . $row['dato'] . "</span><br>";
+    echo "<span class='msgComment'>" . nl2br($row['CommentText']) . "</span>";
+    echo "</div>";
+}
+// ...
+
 }
 
 ?>
@@ -46,7 +48,7 @@ if (isset($_GET["MediaID"])) {
         border-radius: 20px;
     }
 
-    ​ .userBox {
+    .userBox {
         display: flex;
         align-items: center;
         gap: 2%;
@@ -55,14 +57,13 @@ if (isset($_GET["MediaID"])) {
     #commentAvatar {
         height: 40px;
         width: 40px;
-        background-color: red;
         border-radius: 980px;
+        object-fit:cover;
     }
 
     .userNameComment {
         color: grey;
         opacity: 0.9;
-        margin-left: 5%;
     }
 
     .datoComment {
