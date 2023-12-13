@@ -34,12 +34,36 @@ require("../logic/createComment.inc.php");
     </div>
     <div class="imageModal">
         <?php
-        $sql = "SELECT Profile.ProfileID, Profile.Username, Profile.Fname, Profile.Lname, Profile.Avatar, Media.URL, Media.mediaTitle, Media.mediaDesc, Media.MediaID, (SELECT COUNT(*) FROM Likes WHERE Likes.MediaLikeFK = Media.MediaID) AS 'Likes',(CASE WHEN EXISTS (SELECT 1 FROM Likes WHERE Likes.MediaLikeFK = Media.MediaID AND Likes.ProfileLikeFK = Profile.ProfileID) THEN 1 ELSE 0 END) AS 'HasLiked'
+        $sql = "SELECT 
+        Profile.ProfileID, 
+        Profile.Username, 
+        Profile.Fname, 
+        Profile.Lname, 
+        Profile.Avatar, 
+        Media.URL, 
+        Media.mediaTitle, 
+        Media.mediaDesc, 
+        Media.MediaID, 
+        SUM(Likes.LikeAmount) AS 'Likes',
+        (CASE WHEN SUM(Likes.LikeAmount) > 0 THEN 1 ELSE 0 END) AS 'HasLiked'
     FROM
         Profile
     JOIN
         Media ON Profile.ProfileID = Media.MediaProfileFK
-    ORDER BY Likes DESC;";
+    LEFT JOIN
+        Likes ON Media.MediaID = Likes.MediaLikeFK
+    GROUP BY
+        Profile.ProfileID, 
+        Profile.Username, 
+        Profile.Fname, 
+        Profile.Lname, 
+        Profile.Avatar, 
+        Media.URL, 
+        Media.mediaTitle, 
+        Media.mediaDesc, 
+        Media.MediaID
+    ORDER BY 
+        'Likes' DESC;;";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -72,16 +96,13 @@ require("../logic/createComment.inc.php");
                         <h5 id="modalTitle"></h5>
                         <p id="modalDescription">
                         <div class="likeButtons">
-                            <form action="like.php" method="post">
-                                <input type="hidden" id='likeMedia' name="MediaLikeFK" value="3"> <!-- Replace with the actual profile ID -->
-                                <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="3"> <!-- Replace with the actual media ID -->
+                        <form action="../logic/like.php" method="post">
+                                <input type="hidden" id='likeMedia' name="MediaLikeFK" value="$_SESSION['MediaID']"> <!-- Replace with the actual profile ID -->
+                                <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="$_SESSION['userid']"> <!-- Replace with the actual media ID -->
                                 <button class="like-button" type="submit" name="like_action" value="Like">✓</button>
-                            </form>
-                            <form action="like.php" method="post">
-                                <input type="hidden" id='likeMedia' name="MediaLikeFK" value="3"> <!-- Replace with the actual profile ID -->
-                                <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="3"> <!-- Replace with the actual media ID -->
                                 <button class="dislike-button" type="submit" name="like_action" value="dislike">✕</button>
                             </form>
+                            
                         </div>
                         <?php
                         echo '<div class="comments">';
