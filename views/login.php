@@ -16,14 +16,18 @@
 <?php
 spl_autoload_register(function ($class) {
     include_once "../classes/" . $class . ".php";
-});?>
+});
+require_once("../logic/login.php"); ?>
+
+
     <?php
     if (!empty($msg)) {
         echo "<p>" . $msg . "</p>";
     }
     ?>
+   
  <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-    <form id="loginForm" action="../logic/login.php" method="post" >
+    <form id="loginForm" action="" method="post" >
 
         <h2>Login</h2>
         <h4>Username:</h4>
