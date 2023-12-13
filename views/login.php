@@ -26,7 +26,7 @@ require_once("../logic/login.php"); ?>
     }
     ?>
    
- <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+
     <form id="loginForm" action="" method="post" >
 
         <h2>Login</h2>

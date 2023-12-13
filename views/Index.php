@@ -1,4 +1,5 @@
 <?php
+
 spl_autoload_register(function ($class) {
     include_once "../classes/" . $class . ".php";
 });
@@ -15,7 +16,7 @@ require("../logic/createComment.inc.php");
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <form method="post" id="modalform" action="mediaInsert.php" enctype="multipart/form-data">
+                <form method="post" id="modalform" action="../logic/mediaInsert.php" enctype="multipart/form-data">
                     <div class="modalbox">
                         <div class="modalLeft">
                             <input class="uploadBtn" type="file" name="picture">
@@ -97,8 +98,8 @@ require("../logic/createComment.inc.php");
                         <p id="modalDescription">
                         <div class="likeButtons">
                         <form action="../logic/like.php" method="post">
-                                <input type="hidden" id='likeMedia' name="MediaLikeFK" value="$_SESSION['MediaID']"> <!-- Replace with the actual profile ID -->
-                                <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="$_SESSION['userid']"> <!-- Replace with the actual media ID -->
+                                <input type="hidden" id='likeMedia' name="MediaLikeFK" value="$_SESSION['MediaID']"> 
+                                <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="$_SESSION['userid']"> 
                                 <button class="like-button" type="submit" name="like_action" value="Like">✓</button>
                                 <button class="dislike-button" type="submit" name="like_action" value="dislike">✕</button>
                             </form>
@@ -108,9 +109,8 @@ require("../logic/createComment.inc.php");
                         echo '<div class="comments">';
                         require("../logic/getComments.inc.php");
                         echo '</div>';
-                        //$MediaID = 3;
-                        echo "<form method='POST' action='../logic/createComment.inc.php'>
-                            <input type='hidden' name='MediaID' id='hiddenMediaID' value='3'>
+                        echo "<form method='POST' action='../logic/createComment.inc.php' >
+                            <input type='hidden' name='MediaID' id='hiddenMediaID' value='MediaID'>
                             <input type='hidden' name='ProfileFK' value='Anonymous'>
                             <input type='hidden' name='dato' value='" . date('Y-m-d H:i:s') . "'>
                             <textarea class='CommentText' name='CommentText'></textarea>
@@ -125,8 +125,9 @@ require("../logic/createComment.inc.php");
         </div>
     </div>
     <?php require("../includes/footer.php"); ?>
-   
-    <script src="../assests/app.js"></script>
+    
+    <script src="../assets/app.js"></script>
+
 </body>
 
 </html>

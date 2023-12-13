@@ -115,7 +115,7 @@ input[type=file]::file-selector-button {
 
 #myBtn:hover {
     cursor: pointer;
-    background-color: red;
+    background-color: rgb(227, 205, 205);
 }
 
 #test {
