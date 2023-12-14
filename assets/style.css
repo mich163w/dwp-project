@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     padding: 0;
@@ -58,23 +59,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*       INDEX       */
 
 .content {
@@ -128,6 +112,44 @@ input[type=file]::file-selector-button {
 }
 
 
+    .CommentText {
+        overflow: auto;
+        resize: vertical;
+        width: 95%;
+    }
+
+    .commentSubmit {
+        background-color: #DDB3B3;
+        border-radius: 10px;
+        margin-bottom: 5%;
+        height: 31px;
+        color: white;
+        border: none;
+    }
+
+    .likeButtons {
+        display: flex;
+        margin-bottom: 2%;
+        gap: 1%
+    }
+
+    .like-button {
+        background-color: #DDB3B3;
+        border-radius: 10px;
+        height: 22px;
+        width: 30px;
+        color: black;
+        font-size: 12px;
+    }
+
+    .dislike-button {
+        background-color: #DDB3B3;
+        border-radius: 10px;
+        height: 22px;
+        width: 30px;
+        color: black;
+        font-size: 12px;
+    }
 
 
 /* The Modal (background) */
@@ -316,6 +338,7 @@ input[type=file]::file-selector-button {
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
+    width: 85%;
 }
 
 .modal-body {
@@ -381,3 +404,325 @@ input[type=file]::file-selector-button {
     position: absolute;
     margin-top: -17px;
 }
+
+
+/* profile */
+
+
+.profile {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    width: 96%;
+}
+
+input[type="submit"] {
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ddb3b3;
+    color: white;
+    cursor: pointer;
+    width: 16%;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.profile img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.profile h2 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.profile p {
+    margin-bottom: 5px;
+    margin-left: 43px;
+}
+
+.logout {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logout-btn {
+    background-color: #ddb3b3;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.file-avatar {
+    position: absolute;
+    margin-top: 100px;
+    margin-left: -2%;
+    color: grey;
+    font-size: 11px;
+
+}
+
+.upload-button {
+    width: 53px !important;
+    position: absolute;
+    margin: 103px -302px;
+}
+
+/* newuser */
+
+
+p {
+    font-size: 11;
+}
+
+h2{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+    margin: auto;
+
+}
+
+.newuser {
+    max-width: 400px;
+    margin: 150px auto;
+    background-color: #ffffff;
+    padding: 27px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.newuser-input[type="text"],
+.newuser-input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.newuser-input[type="submit"] {
+    width: 100%;
+    background-color: #ddb3b3;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 11px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.newuser-submit[type="submit"]:hover {
+    background-color: #e6cdcd;
+}
+
+/* login */
+
+
+
+
+
+#loginForm {
+    max-width: 400px;
+    margin: 150px auto;
+    background-color: #ffffff;
+    padding: 27px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 12px;
+    color: #9b9b9b;
+    margin-top: -4px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #ddb3b3;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 11px;
+}
+
+input[type="submit"]:hover {
+    background-color: #e6cdcd;
+}
+
+/* edit */
+
+
+    .logout {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+    }
+
+    .logout-btn {
+        background-color: #ddb3b3;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .edit-container {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .edit-btn {
+        width: 20%;
+        background-color: #ddb3b3;
+        color: #fff;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .user-info {
+        margin-top: 20px;
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+    }
+
+    .blocked {
+        color: red;
+        font-weight: bold;
+    }
+
+
+    /* about */
+    
+    .tekst {
+        padding-top: 7.5%;
+        margin-left: 2%;
+        width: 70vw;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: lighter;
+    }
+
+    .omospara {
+        margin-bottom: 5%;
+    }
+
+
+
+/* rules */
+.centered-text {
+    text-align: justify;
+    width: 40%;
+    margin-top: 70px;
+    margin-left: 70px;
+}
+
+
+/* logic/classes */
+
+
+    .commment-box {
+        border: 1px solid gray;
+        width: 95%;
+        height: auto;
+        padding: 2%;
+        margin-bottom: 1%;
+        border-radius: 20px;
+    }
+
+    .userBox {
+        display: flex;
+        align-items: center;
+        gap: 2%;
+    }
+
+    #commentAvatar {
+        height: 40px;
+        width: 40px;
+        border-radius: 980px;
+        object-fit:cover;
+    }
+
+    .userNameComment {
+        color: grey;
+        opacity: 0.9;
+    }
+
+    .datoComment {
+        color: grey;
+        opacity: 0.9;
+        font-size: 12px;
+    }
+
+    .msgComment {
+        color: black;
+    }

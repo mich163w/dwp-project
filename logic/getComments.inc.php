@@ -37,42 +37,4 @@ while ($row = $result->fetch_assoc()) {
 }
 
 ?>
-
-<style>
-    .commment-box {
-        border: 1px solid gray;
-        width: 95%;
-        height: auto;
-        padding: 2%;
-        margin-bottom: 1%;
-        border-radius: 20px;
-    }
-
-    .userBox {
-        display: flex;
-        align-items: center;
-        gap: 2%;
-    }
-
-    #commentAvatar {
-        height: 40px;
-        width: 40px;
-        border-radius: 980px;
-        object-fit:cover;
-    }
-
-    .userNameComment {
-        color: grey;
-        opacity: 0.9;
-    }
-
-    .datoComment {
-        color: grey;
-        opacity: 0.9;
-        font-size: 12px;
-    }
-
-    .msgComment {
-        color: black;
-    }
-</style>
+<link rel="stylesheet" href="../assets/style.css">

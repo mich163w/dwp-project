@@ -16,7 +16,10 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== 'admin') {
 
 <!DOCTYPE html>
 <html>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
 <head>
     <title>Edit Page</title>
 </head>
@@ -72,64 +75,5 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== 'admin') {
 </body>
 
 </html>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 
-<style>
-    body {
-        font-family: 'Montserrat', sans-serif;
-        padding: 0;
-        background-image: url(../BGimg/DWPBaggrund.jpg);
-        background-size: cover;
-    }
-
-    .logout {
-        display: flex;
-        justify-content: flex-end;
-        padding: 10px;
-    }
-
-    .logout-btn {
-        background-color: #ddb3b3;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-
-    .edit-container {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .edit-btn {
-        width: 20%;
-        background-color: #ddb3b3;
-        color: #fff;
-        padding: 15px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
-
-    .user-info {
-        margin-top: 20px;
-        background-color: #f0f0f0;
-        padding: 15px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 30%;
-    }
-
-    .blocked {
-        color: red;
-        font-weight: bold;
-    }
-</style>

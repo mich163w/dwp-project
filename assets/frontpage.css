@@ -1,0 +1,60 @@
+body {
+    background-image: url(../BGimg/sip.png);
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 15%;
+}
+
+
+
+    .h1-fp {
+        font-size: 75px;
+        margin: 0 150px;
+    }
+
+    .h2-fp {
+        font-size: 30px;
+        margin: 0 150px;
+        font-weight: lighter;
+    }
+
+
+    .btns {
+        margin-top: 18px;
+        margin-left: 150px;
+    }
+
+    .login-fp {
+        width: 12%;
+        background-color: #ddb3b3;
+        color: black;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 11px;
+        margin: 5px;
+    }
+
+    .signup-fp {
+        width: 12%;
+        background-color: white;
+        color: black;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 11px;
+        margin: 5px;
+    }
+
+    .rules {
+    text-decoration: none;
+    color: white;
+    }
+
+    .rules:hover {
+    text-decoration: underline;
+    }

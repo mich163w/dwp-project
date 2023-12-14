@@ -1,12 +1,13 @@
 <?php
-
 spl_autoload_register(function ($class) {
     include_once "../classes/" . $class . ".php";
 });
+require_once("../classes/DBCon.php");
 date_default_timezone_set('Europe/Copenhagen');
-require("../logic/createComment.inc.php");
+//require("../logic/createComment.inc.php");
 ?>
 <!DOCTYPE html>
+
 <html lang="en">
 <?php require("../includes/header.php"); ?>
 <body>
@@ -16,7 +17,7 @@ require("../logic/createComment.inc.php");
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <form method="post" id="modalform" action="../logic/mediaInsert.php" enctype="multipart/form-data">
+                <form method="post" id="modalform" action="mediaInsert.php" enctype="multipart/form-data">
                     <div class="modalbox">
                         <div class="modalLeft">
                             <input class="uploadBtn" type="file" name="picture">
@@ -64,7 +65,7 @@ require("../logic/createComment.inc.php");
         Media.mediaDesc, 
         Media.MediaID
     ORDER BY 
-        'Likes' DESC;;";
+        'Likes' DESC;";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -98,8 +99,8 @@ require("../logic/createComment.inc.php");
                         <p id="modalDescription">
                         <div class="likeButtons">
                         <form action="../logic/like.php" method="post">
-                                <input type="hidden" id='likeMedia' name="MediaLikeFK" value="$_SESSION['MediaID']"> 
-                                <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="$_SESSION['userid']"> 
+                                <input type="hidden" id='likeMedia' name="MediaLikeFK" value="$_SESSION['MediaID']"> <!-- Replace with the actual profile ID -->
+                                <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="$_SESSION['userid']"> <!-- Replace with the actual media ID -->
                                 <button class="like-button" type="submit" name="like_action" value="Like">✓</button>
                                 <button class="dislike-button" type="submit" name="like_action" value="dislike">✕</button>
                             </form>
@@ -109,8 +110,9 @@ require("../logic/createComment.inc.php");
                         echo '<div class="comments">';
                         require("../logic/getComments.inc.php");
                         echo '</div>';
-                        echo "<form method='POST' action='../logic/createComment.inc.php' >
-                            <input type='hidden' name='MediaID' id='hiddenMediaID' value='MediaID'>
+                        //$MediaID = 3;
+                        echo "<form method='POST' action='../logic/createComment.inc.php'>
+                            <input type='hidden' name='MediaID' id='hiddenMediaID' value='3'>
                             <input type='hidden' name='ProfileFK' value='Anonymous'>
                             <input type='hidden' name='dato' value='" . date('Y-m-d H:i:s') . "'>
                             <textarea class='CommentText' name='CommentText'></textarea>
@@ -125,49 +127,8 @@ require("../logic/createComment.inc.php");
         </div>
     </div>
     <?php require("../includes/footer.php"); ?>
-    
+   
     <script src="../assets/app.js"></script>
-
 </body>
 
 </html>
-<style>
-    .CommentText {
-        overflow: auto;
-        resize: vertical;
-        width: 95%;
-    }
-
-    .commentSubmit {
-        background-color: #DDB3B3;
-        border-radius: 10px;
-        margin-bottom: 5%;
-        height: 31px;
-        color: white;
-        border: none;
-    }
-
-    .likeButtons {
-        display: flex;
-        margin-bottom: 2%;
-        gap: 1%
-    }
-
-    .like-button {
-        background-color: #DDB3B3;
-        border-radius: 10px;
-        height: 22px;
-        width: 30px;
-        color: black;
-        font-size: 12px;
-    }
-
-    .dislike-button {
-        background-color: #DDB3B3;
-        border-radius: 10px;
-        height: 22px;
-        width: 30px;
-        color: black;
-        font-size: 12px;
-    }
-</style>

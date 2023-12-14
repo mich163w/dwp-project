@@ -19,7 +19,7 @@ if (isset($_POST['commentSubmit'])) {
         $stmt->close();
         $conn->close();
         
-  
+        header( "Location: ../views/index.php" );
         exit();
     } else {
         die("Error: Invalid user or database connection");

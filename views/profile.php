@@ -11,112 +11,13 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="stylesheet" href="../assets/style.css">
 <head>
     <title>Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        body {
 
-            background-image: url(../BGimg/DWPBaggrund.jpg);
-            background-attachment: fixed;
-            background-size: cover;
-            height: auto;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .profile {
-            background: white;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            margin-bottom: 10px;
-        }
-
-        form {
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-        }
-
-
-        input[type="text"],
-        input[type="password"] {
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            margin-bottom: 15px;
-            width: 96%;
-        }
-
-        input[type="submit"] {
-            padding: 8px;
-            border: none;
-            border-radius: 10px;
-            background-color: #ddb3b3;
-            color: white;
-            cursor: pointer;
-            width: 16%;
-            display: flex;
-            align-self: flex-end;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .top {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-        }
-
-        .profile img {
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
-
-        .profile h2 {
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .profile p {
-            margin-bottom: 5px;
-            margin-left: 43px;
-        }
-
-        .logout {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .logout-btn {
-            background-color: #ddb3b3;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-        }
-
-        .file-avatar {
-            position: absolute;
-            margin-top: 109px;
-            margin-left: -2%;
-        }
-
-        .upload-button {
-            width: 53px !important;
-            /* margin-left: 4px !important; */
-            position: absolute;
-            margin: 103px -302px;
-        }
-    </style>
 </head>
 
 <body>

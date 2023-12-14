@@ -2,7 +2,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="../assets/style.css">
 <html lang="en">
 
 <?php require("../includes/header.php"); ?>
@@ -24,16 +24,3 @@
 
 </html>
 
-<style>
-    .tekst {
-        padding-top: 7.5%;
-        margin-left: 2%;
-        width: 70vw;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: lighter;
-    }
-
-    .omospara {
-        margin-bottom: 5%;
-    }
-</style>

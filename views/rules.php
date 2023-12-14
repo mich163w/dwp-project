@@ -56,11 +56,4 @@
         background-size: cover;
         color: white;
     }
-
-    .centered-text {
-        text-align: justify;
-        width: 40%;
-        margin-top: 70px;
-        margin-left: 70px;
-    }
 </style>
