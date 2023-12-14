@@ -1,5 +1,5 @@
 <?php
-define("DB_SERVER", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "");
-define("DB_NAME", "SipCheer");
+define("DB_SERVER", "one.com_host");
+define("DB_USER", "sipcheer_dksipcheer");
+define("DB_PASS", "Dwp69Dwp");
+define("DB_NAME", "sipcheer_dksipcheer");

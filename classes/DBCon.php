@@ -2,12 +2,12 @@
 require_once("constants.php");
 class DBCon
 {
-    private $Username = "root";
-    private $Pass = "";
+    private $Username = "sipcheer_dksipcheer";
+    private $Pass = "Dwp69Dwp";
     public $dbCon;
 
     public function __construct(){
-        $dsn = 'mysql:host=localhost;dbname=SipCheer;charset=utf8';
+        $dsn = 'mysql:host=localhost;dbname=sipcheer_dksipcheer;charset=utf8';
         $this->dbCon = new PDO($dsn, $this->Username, $this->Pass);
         $this->dbCon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
