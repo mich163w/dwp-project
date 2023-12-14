@@ -1,5 +1,6 @@
 <?php
 require_once("constants.php");
+
 class DBCon
 {
     private $Username = "sipcheer_dksipcheer";
@@ -8,8 +9,12 @@ class DBCon
 
     public function __construct(){
         $dsn = 'mysql:host=localhost;dbname=sipcheer_dksipcheer;charset=utf8';
-        $this->dbCon = new PDO($dsn, $this->Username, $this->Pass);
-        $this->dbCon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $this->dbCon = new PDO($dsn, $this->Username, $this->Pass);
+            $this->dbCon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Connection failed: " . $e->getMessage());
+        }
     }
 
     public function DBClose(){
@@ -82,10 +87,16 @@ class DBCon
 }
 
 
+// Instantiate the DBCon class
+$db = new DBCon();
+
+// MySQLi Connection
 $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS);
-if(!$conn) {
+
+if (!$conn) {
     die("Error!");
 }
+
 $conn->select_db(DB_NAME);
 
 $dbSelect = mysqli_select_db($conn, DB_NAME);
@@ -93,5 +104,4 @@ $dbSelect = mysqli_select_db($conn, DB_NAME);
 if (!$dbSelect) {
     die("Error: Unable to select database. " . mysqli_error($conn));
 }
-
-
+?>

@@ -3,7 +3,7 @@ class SessionHandle
 {
     public function __construct()
     {
-        session_start(); // Start the session
+        session_start();// Start the session
     }
 
     public function logged_in()
@@ -24,8 +24,4 @@ class SessionHandle
         session_destroy();
     }
 }
-?> 
-
-
-
-
+?>

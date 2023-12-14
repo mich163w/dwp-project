@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(isset($_POST['submit'])) {
     if((($_FILES['picture']['type']=="image/gif") || 
         ($_FILES['picture']['type']=="image/png") || 

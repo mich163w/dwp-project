@@ -1,5 +1,5 @@
 <div class="menubox">
-    <a href="../views/index.php">
+    <a href="./index.php">
         <img id="logo" src="../BGimg/DrinkDBLogo.svg" alt="logo">
     </a>
 
@@ -11,23 +11,6 @@
         <button class="toLogin">About</button>
     </a>
     </div>
-
-    <?php
-require_once("../classes/SessionHandle.php");
-
-$session = new SessionHandle();
-
-if (!$session->logged_in()) {
-    // Brug kun denne del, hvis brugeren ikke er logget ind
-    ?>
-    <a href="../views/frontpage.php">
-        <button class="toLogin">Login</button>
-    </a>
-    <?php
-}
-?>
-
-
     <div class="settings">
         <a href="../views/profile.php">
             <img id="usericon" src="../BGimg/user.png" alt="userIcon">

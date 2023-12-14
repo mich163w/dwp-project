@@ -1,7 +1,5 @@
 <?php
 require_once("../classes/DBCon.php");
-
-// Start session, hvis den ikke allerede er startet
 session_start();
 
 if (isset($_POST['commentSubmit'])) {
@@ -19,13 +17,10 @@ if (isset($_POST['commentSubmit'])) {
         $stmt->close();
         $conn->close();
         
-        header( "Location: ../views/index.php" );
+        header( "Location: ../index.php" );
         exit();
     } else {
         die("Error: Invalid user or database connection");
     }
 }
 ?>
-
-
-

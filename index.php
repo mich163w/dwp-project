@@ -1,23 +1,40 @@
 <?php
+session_start();
 spl_autoload_register(function ($class) {
-    include_once "../classes/" . $class . ".php";
+    include_once "./classes/" . $class . ".php";
 });
-require_once("../classes/DBCon.php");
+$session = new SessionHandle();
+require_once("./classes/DBCon.php");
 date_default_timezone_set('Europe/Copenhagen');
 //require("../logic/createComment.inc.php");
+
+//require_once("./classes/SessionHandle.php");
+
+
+
+if (!$session->logged_in()) {
+    // Brug kun denne del, hvis brugeren ikke er logget ind
+    ?>
+    <a href="./views/frontpage.php">
+        <button class="toLogin2">Login</button>
+    </a>
+    <?php
+}
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
-<?php require("../includes/header.php"); ?>
+<?php require("./includes/header.php"); ?>
 <body>
-    <?php require("../includes/menu.php"); ?>
+
+    <?php require("./includes/menu.php"); ?>
     <div class="content">
         <button id="myBtn">+</button>
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <form method="post" id="modalform" action="mediaInsert.php" enctype="multipart/form-data">
+                <form method="post" id="modalform" action="./logic/mediaInsert.php" enctype="multipart/form-data">
                     <div class="modalbox">
                         <div class="modalLeft">
                             <input class="uploadBtn" type="file" name="picture">
@@ -98,7 +115,7 @@ date_default_timezone_set('Europe/Copenhagen');
                         <h5 id="modalTitle"></h5>
                         <p id="modalDescription">
                         <div class="likeButtons">
-                        <form action="../logic/like.php" method="post">
+                        <form action="./logic/like.php" method="post">
                                 <input type="hidden" id='likeMedia' name="MediaLikeFK" value="$_SESSION['MediaID']"> <!-- Replace with the actual profile ID -->
                                 <input type="hidden" id='likeProfile' name="ProfileLikeFK" value="$_SESSION['userid']"> <!-- Replace with the actual media ID -->
                                 <button class="like-button" type="submit" name="like_action" value="Like">✓</button>
@@ -108,11 +125,11 @@ date_default_timezone_set('Europe/Copenhagen');
                         </div>
                         <?php
                         echo '<div class="comments">';
-                        require("../logic/getComments.inc.php");
+                        require("./logic/getComments.inc.php");
                         echo '</div>';
                         //$MediaID = 3;
-                        echo "<form method='POST' action='../logic/createComment.inc.php'>
-                            <input type='hidden' name='MediaID' id='hiddenMediaID' value='3'>
+                        echo "<form method='POST' action='./logic/createComment.inc.php'>
+                            <input type='hidden' name='MediaID' id='hiddenMediaID' value=''>
                             <input type='hidden' name='ProfileFK' value='Anonymous'>
                             <input type='hidden' name='dato' value='" . date('Y-m-d H:i:s') . "'>
                             <textarea class='CommentText' name='CommentText'></textarea>
@@ -126,9 +143,9 @@ date_default_timezone_set('Europe/Copenhagen');
             </div>
         </div>
     </div>
-    <?php require("../includes/footer.php"); ?>
-   
-    <script src="../assets/app.js"></script>
+    <?php require("./includes/footer.php");?>
+    <script src="./assets/app.js"></script>
+  
 </body>
 
 </html>

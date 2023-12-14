@@ -1,12 +1,9 @@
 <?php
-
-require("../classes/DBCon.php");
-
 spl_autoload_register(function ($class) {
     include "../classes/" . $class . ".php";
 });
 
-
+require("../classes/DBCon.php");
 require_once("upload.php");
 
 echo "Hello World";

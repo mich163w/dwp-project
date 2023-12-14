@@ -403,6 +403,19 @@ input[type=file]::file-selector-button {
     margin-left: 45px;
     position: absolute;
     margin-top: -17px;
+
+}
+.toLogin2 {
+    border-radius: 16px;
+    border: none;
+    height: 33px;
+    width: 89px;
+    background-color: #ddb3b3;
+    color: white;
+    margin-left: 70%;
+    position: absolute;
+    margin-top: 32px;
+    z-index: 110;
 }
 
 
@@ -725,4 +738,8 @@ input[type="submit"]:hover {
 
     .msgComment {
         color: black;
+    }
+
+    .modal-backdrop {
+        display: none;
     }

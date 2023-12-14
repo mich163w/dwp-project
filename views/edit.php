@@ -1,7 +1,5 @@
 <?php
-
 require_once("../classes/DBCon.php"); 
-
 session_start();
 
 // Tjekker om brugeren er logget ind som admin

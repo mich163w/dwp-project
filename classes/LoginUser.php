@@ -1,16 +1,14 @@
 <?php
-
-
 class LoginUser
 {
     public $message;
 
     public function __construct($Username, $Pass)
     {
-        // Starter sessionen, hvis den ikke allerede er startet
+      /*   // Starter sessionen, hvis den ikke allerede er startet
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
-        }
+        } */
 
         $db = new DBCon();
         $Username = trim($Username);
@@ -32,7 +30,7 @@ class LoginUser
                     // Almindelig bruger login
                     $_SESSION['Profile'] = $found_user[0]['Username'];
                     $_SESSION['userid'] = $found_user[0]['ProfileID'];
-                    $redirect = new Redirector("../views/index.php");
+                    $redirect = new Redirector("../index.php");
                 }
             } else {
                 $this->message = "Brugernavn eller adgangskode er forkert.<br />Sørg for, at din Caps Lock-tast er slået fra, og prøv igen.";

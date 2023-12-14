@@ -1,6 +1,4 @@
 <?php
-
-// Start sessionen
 session_start();
 
 // Sørg for at tømme alle sessionens variabler
