@@ -6,3 +6,4 @@ class Redirector
         exit;
     }
 }
+
